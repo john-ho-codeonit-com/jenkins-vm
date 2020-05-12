@@ -1,0 +1,18 @@
+#cloud-config
+# TODO:
+# - init script once
+#   - create user
+#   - create API token
+# - run script
+# - install plugins (iterate json file remotely)
+
+package_upgrade: true
+runcmd:
+  - wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
+  - apt-add-repository "deb https://pkg.jenkins.io/debian-stable binary/"
+  - apt-get update && apt-get install jenkins docker.io openjdk-8-jre -y
+  - echo 'JAVA_ARGS="-Djenkins.install.runSetupWizard=false"' >> /etc/default/jenkins
+  - usermod -aG docker jenkins
+  - mkdir -p /var/lib/jenkins/init.groovy.d
+  - curl https://gist.githubusercontent.com/john-ho-codeonit-com/a592573dcb99e9df13327d37d368bbc9/raw/a0e4bf6453fc972658d0758f2eff5dc4fb5a5c00/jenkins-init.groovy -o /var/lib/jenkins/init.groovy.d/jenkins-init.groovy
+  - service jenkins restart

@@ -1,0 +1,4 @@
+###
+
+
+http://jenkins:1136ab28362e27f7504dfe9407f405df75@192.168.64.3:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)
