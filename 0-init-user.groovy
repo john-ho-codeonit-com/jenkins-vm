@@ -1,9 +1,7 @@
 #!groovy
-
-import hudson.model.*
 import hudson.security.*
-import hudson.security.csrf.DefaultCrumbIssuer
 import jenkins.model.*
+import hudson.security.csrf.DefaultCrumbIssuer
 
 def instance = Jenkins.getInstance()
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)

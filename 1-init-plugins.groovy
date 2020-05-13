@@ -1,6 +1,5 @@
 #!groovy
-
-import jenkins.model.*
+ import jenkins.model.*
 import java.util.logging.Logger
 
 def logger = Logger.getLogger("")

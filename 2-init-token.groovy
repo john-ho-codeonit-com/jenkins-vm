@@ -1,5 +1,4 @@
 #!groovy
-
 import hudson.model.*
 import jenkins.model.*
 import jenkins.security.*
