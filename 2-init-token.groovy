@@ -1,7 +1,8 @@
+#!groovy
+
 import hudson.model.*
-import hudson.security.*
-import hudson.security.csrf.DefaultCrumbIssuer
 import jenkins.model.*
+import jenkins.security.*
 import jenkins.security.apitoken.*
 
 def userName = "jenkins"

@@ -1,3 +1,5 @@
+#!groovy
+
 import jenkins.model.*
 import java.util.logging.Logger
 
