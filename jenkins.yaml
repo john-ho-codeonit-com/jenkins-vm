@@ -14,5 +14,7 @@ runcmd:
   - echo 'JAVA_ARGS="-Djenkins.install.runSetupWizard=false"' >> /etc/default/jenkins
   - usermod -aG docker jenkins
   - mkdir -p /var/lib/jenkins/init.groovy.d
-  - curl https://raw.githubusercontent.com/john-ho-codeonit-com/jenkins-vm/master/init.groovy -o /var/lib/jenkins/init.groovy.d/init.groovy
+  - curl https://raw.githubusercontent.com/john-ho-codeonit-com/jenkins-vm/master/0-init-user.groovy -o /var/lib/jenkins/init.groovy.d/0-init-user.groovy
+  - curl https://raw.githubusercontent.com/john-ho-codeonit-com/jenkins-vm/master/1-init-plugins.groovy -o /var/lib/jenkins/init.groovy.d/1-init-plugins.groovy
+  - curl https://raw.githubusercontent.com/john-ho-codeonit-com/jenkins-vm/master/2-init-token.groovy -o /var/lib/jenkins/init.groovy.d/2-init.groovy
   - service jenkins restart

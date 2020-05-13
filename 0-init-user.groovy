@@ -26,12 +26,4 @@ if (!userExists) {
     strategy.setAllowAnonymousRead(false)
     instance.setAuthorizationStrategy(strategy)
     instance.save()
-    
-    def user = User.get(userName, false)
-    def apiTokenProperty = user.getProperty(ApiTokenProperty.class)
-    def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
-    user.save()
-
-    File file = new File("/var/lib/jenkins/token")
-    file.append(result.plainValue)
 }
