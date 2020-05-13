@@ -2,9 +2,9 @@
 
 import hudson.model.*
 import hudson.security.*
-import jenkins.security.apitoken.*
-import jenkins.model.*   
 import hudson.security.csrf.DefaultCrumbIssuer
+import jenkins.model.*
+import jenkins.security.apitoken.*
 
 def instance = Jenkins.getInstance()
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
@@ -27,11 +27,11 @@ if (!userExists) {
     instance.setAuthorizationStrategy(strategy)
     instance.save()
     
-    // def user = User.get(userName, false)
-    // def apiTokenProperty = user.getProperty(ApiTokenProperty.class)
-    // def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
-    // user.save()
+    def user = User.get(userName, false)
+    def apiTokenProperty = user.getProperty(ApiTokenProperty.class)
+    def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
+    user.save()
 
-    // File file = new File("/var/lib/jenkins/token")
-    // file.append(result.plainValue)
+    File file = new File("/var/lib/jenkins/token")
+    file.append(result.plainValue)
 }
