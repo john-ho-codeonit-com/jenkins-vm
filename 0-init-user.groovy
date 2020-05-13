@@ -1,6 +1,8 @@
 #!groovy
 
+import hudson.model.*
 import hudson.security.*
+import hudson.security.csrf.DefaultCrumbIssuer
 import jenkins.model.*
 
 def instance = Jenkins.getInstance()
@@ -8,6 +10,7 @@ def hudsonRealm = new HudsonPrivateSecurityRealm(false)
 def users = hudsonRealm.getAllUsers()
 def userName = "jenkins"
 def password = "jenkins"
+def tokenName = "jenkins"
 
 instance.setCrumbIssuer(new DefaultCrumbIssuer(true))
 instance.save()
